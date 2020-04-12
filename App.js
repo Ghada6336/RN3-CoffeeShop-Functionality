@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Spinner, Container } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
-
+import { Provider } from "react-redux";
+import store from "./redux";
 // Components
 import RootNavigator from "./Navigation";
 
@@ -23,11 +24,13 @@ export default class App extends Component {
       return <Spinner color="#132D4B" />;
     }
     return (
-      <NavigationContainer>
-        <Container>
-          <RootNavigator />
-        </Container>
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <Container>
+            <RootNavigator />
+          </Container>
+        </NavigationContainer>
+      </Provider>
     );
   }
 }
